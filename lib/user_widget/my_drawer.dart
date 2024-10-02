@@ -1,0 +1,191 @@
+import 'package:flutter/material.dart';
+import 'package:uber_app/authenthication/role_selection_screen.dart';
+import 'package:uber_app/user_main/Reservation_userr.dart';
+import 'package:uber_app/user_main/confirmed%20reservation.dart';
+import 'package:uber_app/user_main/search_screen.dart';
+
+import '../global/global.dart';
+import '../user_main/address_screen.dart';
+import '../user_main/history_screen.dart';
+import '../user_main/my_order_screen.dart';
+import '../user_main/user_home.dart';
+
+
+class MyDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: [
+          // Header drawer
+          Container(
+            padding: const EdgeInsets.only(top: 25, bottom: 10),
+            child: Column(
+              children: [
+                Material(
+                  borderRadius: const BorderRadius.all(Radius.circular(80)),
+                  elevation: 10,
+                  child: Padding(
+                    padding: const EdgeInsets.all(1.0),
+                    child: Container(
+                      height: 160,
+                      width: 160,
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          sharedPreferences!.getString("photoUrl")!,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  sharedPreferences!.getString("name")!,
+                  style: TextStyle(color: Colors.black, fontSize: 20, fontFamily: "Train"),
+                ),
+              ],
+            ),
+          ),
+
+          const SizedBox(height: 12),
+
+          // Body drawer
+          Container(
+            padding: const EdgeInsets.only(top: 1.0),
+            child: Column(
+              children: [
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.home, color: Colors.black),
+                  title: const Text(
+                    "Home",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => const UHomeScreen()));
+                  },
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.reorder, color: Colors.black),
+                  title: const Text(
+                    "My Orders",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => MyOrdersScreen()));
+                  },
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.access_time, color: Colors.black),
+                  title: const Text(
+                    "History",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => HistoryScreen()));
+                  },
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.search, color: Colors.black),
+                  title: const Text(
+                    "Search",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => SearchScreen()));
+                  },
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.add_location, color: Colors.black),
+                  title: const Text(
+                    "Add New Address",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => AddressScreen()));
+                  },
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.event, color: Colors.black),
+                  title: const Text(
+                    "Reservation",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => Ureservation()));
+                  },
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.event, color: Colors.black),
+                  title: const Text(
+                    "Confirmed Reservation",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (c) => UCreservation()));
+                  },
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.exit_to_app, color: Colors.black),
+                  title: const Text(
+                    "Sign Out",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    firebaseAuth.signOut().then((value) {
+                      Navigator.push(context, MaterialPageRoute(builder: (c) => RoleSelectionScreen()));
+                    });
+                  },
+                ),
+                const Divider(
+                  height: 10,
+                  color: Colors.grey,
+                  thickness: 2,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
