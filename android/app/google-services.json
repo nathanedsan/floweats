@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1035918575593",
+    "project_id": "crowded-43d96",
+    "storage_bucket": "crowded-43d96.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035918575593:android:532c94146d73e1341e2d78",
+        "android_client_info": {
+          "package_name": "com.nat.crowdapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQQipyIOOzs9BSjTCCaScmOXfPVPchjf4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
